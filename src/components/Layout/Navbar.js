@@ -1,28 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Search from './Search'
 import {Link} from 'react-router-dom'
 
-class Navbar extends Component  {
-    state = {
-        query: ''
-    }
+// Redux 
+import {useDispatch} from 'react-redux'
+import {getMovies} from './../../redux/actions/movieActions'
 
-    render() {
+const Navbar = () => {
+    const dispatch = useDispatch()
+
         return ( 
             <nav className="nav">
                 <div className="nav__btns">
                    <Link to="/">
-                       <button className="nav__btn nav__movie">Movies</button>
+                       <button className="nav__btn nav__movie" onClick={() => dispatch(getMovies())}>Movies</button>
                    </Link>
                    <Link to="/tv-shows">
                        <button className="nav__btn nav__tv-shows">Tv Shows</button>
                    </Link>
                 </div>
-                <div className="nav__input">
-                   <input className="nav__search" placeholder="Search movies, tv-shows..." type="text" />
-                </div>
+                <Search />
             </nav>
-       )
-    }    
+       ) 
 }
 
 export default Navbar
