@@ -1,6 +1,6 @@
 import React from 'react';
-import {Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import './App.css';
+import {Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import Navbar from './components/Layout/Navbar'
 
 import Movies from './pages/Movies'
@@ -11,10 +11,10 @@ function App() {
     <Router>
       <Navbar />
       <div className="container">
-      <Switch>
-        <Route exact path="/" component={Movies}/>
-        <Route path="/tv-shows" component={TvShows}/>
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={Movies}/>
+          <Route path="/tv-shows" component={TvShows}/>
+        </Switch>
       </div>
     </Router>
   );
