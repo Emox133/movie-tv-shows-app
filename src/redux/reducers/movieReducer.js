@@ -2,13 +2,12 @@ import * as types from './../types'
 
 const initialState = {
     movies: [],
-    loading: false,
-    errors: {}
+    loading: false
 }
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case types.LOADING_DATA: 
+        case types.LOADING_MOVIES: 
             return {
                 ...state,
                 loading: true
@@ -19,13 +18,6 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: false,
                 movies: [...action.payload]
-            }
-
-        case types.SET_ERRORS:
-            return {
-                ...state,
-                loading: false,
-                errors: [...action.payload]
             }
 
         default: 

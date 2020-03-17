@@ -1,5 +1,6 @@
 import React from 'react'
 import Movie from './../components/Movie/Movie'
+import Loader from './../components/Layout/UI/Loader'
 
 // Redux
 import {useSelector, shallowEqual} from 'react-redux'
@@ -12,10 +13,9 @@ const Movies = () => {
         imageEssentials: state.data.config
     }), shallowEqual)
 
-    
     let showMovies = movies && !loading ?  
         movies.map(movie => <Movie key={movie.id} images={imageEssentials} movie={movie}/>) 
-     : <p>Loading ...</p>
+     : <Loader />
 
     return showMovies
 }

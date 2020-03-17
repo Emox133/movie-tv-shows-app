@@ -3,7 +3,7 @@ import axios from 'axios'
 import {key} from './../../util/credentials'
 
 export const getMovies = () => dispatch => {
-    dispatch({type: types.LOADING_DATA})
+    dispatch({type: types.LOADING_MOVIES})
     axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}`, {validateStatus: status => {return true}})
     .then(res => {
         dispatch({

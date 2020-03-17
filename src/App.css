@@ -81,8 +81,8 @@ body {
   padding: 3rem;
 }
 
-/**************MOVIE *************/
-.movie {
+/**************CARD*************/
+.card {
   /* border: 3px solid red; */
   text-align: center;
   box-shadow: 2rem 2rem 3rem rgba(0, 0, 0, .5);
@@ -92,16 +92,16 @@ body {
   transition: transform 1s ease;
 }
 
-.movie:hover {
+.card:hover {
   animation: pulsate infinite 1.2s ease-out;
   cursor: pointer;
 }
 
-.movie__title {
+.card__title {
   margin-top: .5rem;
 }
 
-.movie__ratings {
+.card__ratings {
   font-size: 1.4rem;
   display: flex;
   justify-content: space-around;
@@ -109,7 +109,7 @@ body {
   padding: 1.3rem 0;
 }
 
-.movie__image {
+.card__image {
   height: 22rem;
   width: 100%;
   clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);

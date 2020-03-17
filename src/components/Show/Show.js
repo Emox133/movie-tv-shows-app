@@ -6,22 +6,20 @@ import Calendar from './../../assets/icons/SVG/calendar.svg'
 import Heart from './../../assets/icons/SVG/heart-outlined.svg'
 import Average from './../../assets/icons/SVG/area-graph.svg'
 
-const Movie = props => {
-    const {popularity, poster_path, title, vote_average, release_date, id} = props.movie
+const Show = props => {
+    const {popularity, poster_path, name, vote_average, first_air_date, id} = props.show
     
-    // TMDB image creation
-    // https://developers.themoviedb.org/3/getting-started/images
     const base_url = props.images.images.secure_base_url
     const size = props.images.images.poster_sizes[3]
     const imageUrl = `${base_url}${size}/${poster_path}`;
 
     return (
         <article className="card" id={id}>
-            <img src={imageUrl} className="card__image" alt="movie"/>
-            <h1 className="card__title">{title}</h1>
+            <img src={imageUrl} className="card__image" alt="show"/>
+            <h1 className="card__title">{name}</h1>
             <div className="card__ratings">
                 <ReactSVG className="card__ratings-date" src={Calendar}/>
-                <span>{release_date}</span>
+                <span>{first_air_date}</span>
                 <ReactSVG className="card__ratings-popularity" src={Heart}/> 
                 <span>{popularity}</span>
                 <ReactSVG className="card__ratings-vote" src={Average}/>
@@ -31,5 +29,5 @@ const Movie = props => {
     )
 }
 
-export default Movie
+export default Show
 

@@ -13,6 +13,13 @@ export default function (state = initialState, action) {
                 config: action.payload
             }
 
+        case types.SET_ERRORS:
+            return {
+                ...state,
+                loading: false,
+                errors: [...action.payload]
+            }
+            
         default:
             return state
     }
