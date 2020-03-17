@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-/* Colors */
+/************ Colors ***********/
 :root {
   --color-main: #363795;
   --color-alt: #005C97;
@@ -18,18 +18,31 @@
   --color-grey-dark: #444;
 }
 
+/**********ANIMATIONS ************/
+@keyframes pulsate {
+  0% {
+    transform: scale(.95);
+    box-shadow: 2.5rem 2.5rem 3rem rgba(0, 0, 0, .5);
+  }
+
+  100% {
+    transform: scale(1.02);
+    box-shadow: 2rem 2rem 3rem rgba(0, 0, 0, .5);
+  }
+}
+
 html {
   font-size: 62.5%; /*1 rem = 10px*/ 
   font-family: 'Sen', sans-serif;
 }
- 
-.container {
-  text-align: center;
-  height: 90vh;
-  margin-top: 3rem;
-  border: #000 solid 1px;
+
+body {
+  background: #870000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #190A05, #870000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+/**********NAVBAR **********/
 .nav {
   height: 7.5rem;
   width: 100%;
@@ -37,7 +50,7 @@ html {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: crimson;
+  background-color: #190A05;
 }
 
 .nav__btn {
@@ -51,5 +64,54 @@ html {
 
 .nav__search {
   padding: .5rem 0;
-  width: 60%;
+  width: 50%;
+  transition: width .5s ease;
 } 
+
+.nav__search:hover {
+  width: 55%;
+}
+
+.grid-container {
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(10rem, min-content));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 4rem;
+  padding: 3rem;
+}
+
+/**************MOVIE *************/
+.movie {
+  /* border: 3px solid red; */
+  text-align: center;
+  box-shadow: 2rem 2rem 3rem rgba(0, 0, 0, .5);
+  background-color: var(--color-white);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: transform 1s ease;
+}
+
+.movie:hover {
+  animation: pulsate infinite 1.2s ease-out;
+  cursor: pointer;
+}
+
+.movie__title {
+  margin-top: .5rem;
+}
+
+.movie__ratings {
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.3rem 0;
+}
+
+.movie__image {
+  height: 22rem;
+  width: 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
+}
+

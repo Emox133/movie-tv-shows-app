@@ -10,9 +10,9 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div className="container">
+      <div className="grid-container">
         <Switch>
-          <Route exact path="/" component={Movies}/>
+          <Route path="/movies" component={Movies}/>
           <Route path="/tv-shows" component={TvShows}/>
         </Switch>
       </div>

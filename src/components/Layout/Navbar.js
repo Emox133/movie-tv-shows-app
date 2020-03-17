@@ -12,7 +12,7 @@ const Navbar = () => {
         return ( 
             <nav className="nav">
                 <div className="nav__btns">
-                   <Link to="/">
+                   <Link to="/movies">
                        <button className="nav__btn nav__movie" onClick={() => dispatch(getMovies())}>Movies</button>
                    </Link>
                    <Link to="/tv-shows">

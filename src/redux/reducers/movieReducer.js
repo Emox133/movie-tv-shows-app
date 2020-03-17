@@ -18,14 +18,14 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                movies: {...action.payload}
+                movies: [...action.payload]
             }
 
         case types.SET_ERRORS:
             return {
                 ...state,
                 loading: false,
-                errors: {...action.payload}
+                errors: [...action.payload]
             }
 
         default: 

@@ -1,11 +1,14 @@
 import {createStore, compose, applyMiddleware, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
+
 import movieReducer from './reducers/movieReducer'
 import showReducer from './reducers/showReducer'
+import dataReducer from './reducers/dataReducer'
 
 const reducers = combineReducers({
     movie: movieReducer,
-    show: showReducer
+    show: showReducer,
+    data: dataReducer
 })
 
 const middleware = [thunk]
