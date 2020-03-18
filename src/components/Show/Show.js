@@ -1,4 +1,5 @@
 import React from 'react'
+import {assignImages} from './../../util/imageConfig'
 
 // SVG
 import {ReactSVG} from 'react-svg'
@@ -8,10 +9,7 @@ import Average from './../../assets/icons/SVG/area-graph.svg'
 
 const Show = props => {
     const {popularity, poster_path, name, vote_average, first_air_date, id} = props.show
-    
-    const base_url = props.images.images.secure_base_url
-    const size = props.images.images.poster_sizes[3]
-    const imageUrl = `${base_url}${size}/${poster_path}`;
+    const {imageUrl} = assignImages(props, poster_path)
 
     return (
         <article className="card" id={id}>

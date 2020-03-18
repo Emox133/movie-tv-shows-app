@@ -115,3 +115,22 @@ body {
   clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
 }
 
+/************ SINGLE_MOVIE **********/
+.movie__overlay {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: rgba(0, 0, 0, .6);
+  z-index: 10;
+}
+
+.movie__modal {
+  height: 70vh;
+  width: 60vw;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+  background-color: #fff;
+  z-index: 20;
+}

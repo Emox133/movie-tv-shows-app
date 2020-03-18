@@ -15,9 +15,9 @@ const Navbar = () => {
         el.current.focus()
         // Workaround for ComponentWillUpdate , no need to convert the Navbar 
         // to class based component just to call 'click'
-        setTimeout(() => {
-            el.current.click()
-        }, 500)
+        // setTimeout(() => {
+        //     el.current.click()
+        // }, 500)
     }, []) 
 
         return ( 

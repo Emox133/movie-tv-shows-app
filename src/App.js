@@ -5,17 +5,17 @@ import Navbar from './components/Layout/Navbar'
 
 import Movies from './pages/Movies'
 import TvShows from './pages/TvShows'
+import SingleMovie from './components/Movie/SingleMovie'
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <div className="grid-container">
         <Switch>
+          <Route exact path="/movies/:id" component={SingleMovie}/>
           <Route path="/movies" component={Movies}/>
           <Route path="/tv-shows" component={TvShows}/>
         </Switch>
-      </div>
     </Router>
   );
 }

@@ -2,14 +2,22 @@ import * as types from './../types'
 
 const initialState = {
     config: {},
-    errors: {}
+    errors: {},
+    loading: false
 }
 
 export default function (state = initialState, action) {
     switch(action.type) {
+        case types.LOADING_CONFIG:
+            return {
+                ...state,
+                loading: true
+            }
+
         case types.SET_CONFIG: 
             return {
                 ...state,
+                loading: false,
                 config: action.payload
             }
 
@@ -19,7 +27,7 @@ export default function (state = initialState, action) {
                 loading: false,
                 errors: [...action.payload]
             }
-            
+
         default:
             return state
     }

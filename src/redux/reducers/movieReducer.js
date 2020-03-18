@@ -2,7 +2,9 @@ import * as types from './../types'
 
 const initialState = {
     movies: [],
-    loading: false
+    movie: {},
+    loading: false,
+    open: false
 }
 
 export default function(state = initialState, action) {
@@ -18,6 +20,13 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: false,
                 movies: [...action.payload]
+            }
+
+        case types.SET_MOVIE: 
+            return {
+                ...state,
+                loading: false,
+                movie: {...action.payload}
             }
 
         default: 

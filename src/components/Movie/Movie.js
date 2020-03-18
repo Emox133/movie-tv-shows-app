@@ -1,4 +1,10 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
+import {assignImages} from './../../util/imageConfig'
+
+// Redux
+import {useDispatch} from 'react-redux' 
+import {getMovie} from './../../redux/actions/movieActions'
 
 // SVG
 import {ReactSVG} from 'react-svg'
@@ -8,15 +14,11 @@ import Average from './../../assets/icons/SVG/area-graph.svg'
 
 const Movie = props => {
     const {popularity, poster_path, title, vote_average, release_date, id} = props.movie
-    
-    // TMDB image creation
-    // https://developers.themoviedb.org/3/getting-started/images
-    const base_url = props.images.images.secure_base_url
-    const size = props.images.images.poster_sizes[3]
-    const imageUrl = `${base_url}${size}/${poster_path}`;
+    const dispatch = useDispatch()
+    const {imageUrl} = assignImages(props, poster_path)
 
     return (
-        <article className="card" id={id}>
+        <article className="card" id={id} onClick={() => dispatch(getMovie(id, props.history))}>
             <img src={imageUrl} className="card__image" alt="movie"/>
             <h1 className="card__title">{title}</h1>
             <div className="card__ratings">
@@ -31,5 +33,5 @@ const Movie = props => {
     )
 }
 
-export default Movie
+export default withRouter(Movie)
 
