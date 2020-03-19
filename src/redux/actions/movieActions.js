@@ -37,6 +37,21 @@ export const getMovie = (id, history) => dispatch => {
     history.push(`/movies/${id}`)
 }
 
+export const searchMovies = query => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${query}`)
+    .then(res => {
+        dispatch({
+            type: types.SET_MOVIES,
+            payload: res.data.results.slice(0, 12)
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: types.SET_ERRORS,
+            payload: err
+        })
+    })
+};
 
 // This action creator is neccesary because we need to combine three factors to actually
 // show the images 1. Base url, 2. Size, 3. Poster path

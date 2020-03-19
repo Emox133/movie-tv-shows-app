@@ -13,6 +13,7 @@ const Movies = (props) => {
         imageEssentials: state.data.config.images
     }), shallowEqual)
 
+    console.log(movies)
     let showMovies = movies && !loading ?  
         movies.map(movie => <Movie key={movie.id} images={imageEssentials} movie={movie}/>) 
      : <Loader />

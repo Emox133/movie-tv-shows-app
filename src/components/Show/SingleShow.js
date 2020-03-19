@@ -3,7 +3,7 @@ import {assignImages} from './../../util/imageConfig'
 import Loader from './../Layout/UI/Loader/Loader'
 
 // Redux
-import {useSelector, useDispatch, shallowEqual} from 'react-redux'
+import {useSelector, shallowEqual} from 'react-redux'
 
 const SingleShow = (props) => {
     const {show, imageEssentials, loading} = useSelector(state => ({
@@ -12,7 +12,7 @@ const SingleShow = (props) => {
         loading: state.data.loading
     }), shallowEqual);
 
-    const {first_air_date, homepage, id, name, number_of_episodes, number_of_seasons, overview, poster_path} = show
+    const {first_air_date, id, name, number_of_episodes, number_of_seasons, overview, poster_path} = show
     const {imageUrl} = assignImages(imageEssentials, poster_path);
     
     return (
