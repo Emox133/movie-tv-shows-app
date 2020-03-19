@@ -2,6 +2,7 @@ import * as types from './../types'
 
 const initialState = {
     shows: [],
+    show: {},
     loading: false
 }
 
@@ -20,6 +21,13 @@ export default function(state = initialState, action) {
                 shows: [...action.payload]
             }    
         
+        case types.SET_SHOW:
+            return {
+                ...state,
+                loading: false,
+                show: {...action.payload}
+            }
+
         default: 
             return state
     }

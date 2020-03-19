@@ -6,6 +6,7 @@ import Navbar from './components/Layout/Navbar'
 import Movies from './pages/Movies'
 import TvShows from './pages/TvShows'
 import SingleMovie from './components/Movie/SingleMovie'
+import SingleShow from './components/Show/SingleShow'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/movies/:id" component={SingleMovie}/>
           <Route path="/movies" component={Movies}/>
+          <Route exact path="/tv-shows/:id" component={SingleShow}/>
           <Route path="/tv-shows" component={TvShows}/>
         </Switch>
     </Router>

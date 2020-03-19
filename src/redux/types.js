@@ -11,3 +11,4 @@ export const SET_CONFIG = 'SET_CONFIG'
 // TV-Shows action types
 export const LOADING_SHOWS = 'LOADING_SHOWS'
 export const SET_SHOWS = 'SET_SHOWS'
+export const SET_SHOW = 'SET_SHOW'

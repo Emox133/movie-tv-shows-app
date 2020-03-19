@@ -21,13 +21,23 @@
 /**********ANIMATIONS ************/
 @keyframes pulsate {
   0% {
-    transform: scale(.95);
+    transform: scale(.99);
     box-shadow: 2.5rem 2.5rem 3rem rgba(0, 0, 0, .5);
   }
 
   100% {
     transform: scale(1.02);
     box-shadow: 2rem 2rem 3rem rgba(0, 0, 0, .5);
+  }
+}
+
+@keyframes pulsateLeft {
+  0% {
+    transform: translateX(-.7rem);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -93,7 +103,7 @@ body {
 }
 
 .card:hover {
-  animation: pulsate infinite 1.2s ease-out;
+  animation: pulsate infinite 2s ease-in;
   cursor: pointer;
 }
 
@@ -133,4 +143,65 @@ body {
   transform: translate(-50%, -15%);
   background-color: #fff;
   z-index: 20;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.details {
+  height: 90%;
+  width: 50%;
+  margin: 0 auto;
+  /* border: 3px solid #fff; */
+  text-align: center;
+  padding: 2rem;
+  color: #fff;
+  position: relative;
+  transition: transform 1s ease;
+}
+
+.details__image {
+  height: 60%;
+  width: 80%;
+}
+
+.details__title {
+  font-size: 4rem;
+}
+
+.details__overview {
+  margin-bottom: 1.5rem;
+}
+
+.details__overview-text {
+  font-size: 2rem;
+  letter-spacing: .1em;
+  margin-bottom: 3rem;
+}
+
+.details__info {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.details__btn {
+  border: 1px solid red;
+  outline-color: red;
+  padding: .5rem 2rem;
+  position: absolute;
+  top: 5%;
+  left: 14%;
+  color: #000;
+  background-color: #fff;
+  animation: pulsateLeft 1.5s infinite ease-out;
+}
+
+.details__btn:hover {
+  cursor: pointer;
 }

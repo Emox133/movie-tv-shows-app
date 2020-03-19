@@ -1,5 +1,10 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import {assignImages} from './../../util/imageConfig'
+
+// Redux
+import {useDispatch} from 'react-redux'
+import {getShow} from './../../redux/actions/showActions'
 
 // SVG
 import {ReactSVG} from 'react-svg'
@@ -11,8 +16,10 @@ const Show = props => {
     const {popularity, poster_path, name, vote_average, first_air_date, id} = props.show
     const {imageUrl} = assignImages(props, poster_path)
 
+    const dispatch = useDispatch()
+
     return (
-        <article className="card" id={id}>
+        <article className="card" id={id} onClick={() => dispatch(getShow(id, props.history))}>
             <img src={imageUrl} className="card__image" alt="show"/>
             <h1 className="card__title">{name}</h1>
             <div className="card__ratings">
@@ -27,5 +34,5 @@ const Show = props => {
     )
 }
 
-export default Show
+export default withRouter(Show)
 
