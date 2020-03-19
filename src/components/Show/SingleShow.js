@@ -27,7 +27,7 @@ const SingleShow = (props) => {
                     <span className="details__episodes">Episodes: {number_of_episodes}</span>
                     <span className="details__seasons">Seasons: {number_of_seasons}</span>
                 </div>
-                <p className="details__overview-text">{overview}</p>
+                <p className="details__overview-text">{!overview ? <span>No overview for this show 😕</span> : overview}</p>
             </div>
         : <Loader />
     )

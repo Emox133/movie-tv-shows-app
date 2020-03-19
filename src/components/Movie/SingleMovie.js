@@ -19,10 +19,10 @@ const SingleMovie = (props) => {
         !loading ?
             <div className="details" id={id}>
                 <button className="details__btn" onClick={() => props.history.goBack()}>&larr;</button>
-                <img src={imageUrl} alt="details" className="details__image"/>
+                <img src={imageUrl} alt="movie" className="details__image"/>
                 <h1 className="details__title">{title}</h1>
                 <h1 className="details__overview">Movie Overview:</h1>
-                <p className="details__overview-text">{overview}</p>
+                <p className="details__overview-text">{!overview ? <span>No overview for this movie 😕</span> : overview}</p>
             </div>
         : <Loader />
     )

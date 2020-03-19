@@ -38,3 +38,18 @@ export const getShow = (id, history) => dispatch => {
     history.push(`/tv-shows/${id}`)
 }
 
+export const searchShows = query => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${key}&query=${query}`)
+    .then(res =>  {
+        dispatch({
+            type: types.SET_SHOWS,
+            payload: res.data.results.slice(0, 12)
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: types.SET_ERRORS,
+            payload: err
+        })
+    })
+};

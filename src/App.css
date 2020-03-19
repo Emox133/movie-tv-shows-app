@@ -191,8 +191,7 @@ body {
 }
 
 .details__btn {
-  border: 1px solid red;
-  outline-color: red;
+  border: none;
   padding: .5rem 2rem;
   position: absolute;
   top: 5%;
