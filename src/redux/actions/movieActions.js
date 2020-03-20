@@ -27,6 +27,7 @@ export const getMovie = (id, history) => dispatch => {
             type: types.SET_MOVIE,
             payload: res.data
         })
+        dispatch(getMovieTrailer(id));
     })
     .catch(err => {
         dispatch({
@@ -36,6 +37,22 @@ export const getMovie = (id, history) => dispatch => {
     })
     history.push(`/movies/${id}`)
 }
+
+export const getMovieTrailer = id => dispatch =>{
+    axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}`)
+    .then(res => {
+        dispatch({
+            type: types.SET_TRAILER,
+            payload: res.data.results[0].key
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: types.SET_ERRORS,
+            payload: err
+        })
+    })
+};
 
 export const searchMovies = query => dispatch => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${query}`)
