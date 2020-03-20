@@ -10,6 +10,10 @@ dependencies.
 ### `Github Pages`
 https://emox133.github.io/movie-tv-shows-app/
 
+Currently github pages site works ok when the app initialy loads, but there is a flaw currently when reloading the pages
+so i am assuming there is a problem with routing and github pages. I am sugesting that you clone the repository to your local machine and run command `npm install` and after that `npm start`
+and the non-breakable version with all the features will launch.
+
 In the project directory, you can run:
 
 ### `npm start`
