@@ -2,6 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+### `npm install` 
+
+After downloading or cloning the project from github, please run npm install so that your local machine installs all essential
+dependencies. 
+
 In the project directory, you can run:
 
 ### `npm start`

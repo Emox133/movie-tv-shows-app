@@ -48,7 +48,7 @@ const SingleMovie = (props) => {
                 <img src={imageUrl} alt="movie" className="details__image"/>}    
                 <h1 className="details__title">{title}</h1>
                 <h1 className="details__overview">Movie Overview:</h1>
-                <p className="details__overview-text">{loading ? <span>No overview for this movie 😕</span> : overview}</p>
+                <p className="details__overview-text">{overview}</p>
             </div>
         : <Loader />
     )

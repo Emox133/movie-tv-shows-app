@@ -10,15 +10,18 @@ import {getShows} from './../../redux/actions/showActions'
 const Navbar = () => {
     const dispatch = useDispatch()
     const el = useRef(null)
+    const id = localStorage.id;
 
     useEffect(() => {
-        el.current.focus()
         // Workaround for ComponentWillUpdate , no need to convert the Navbar 
         // to class based component just to call 'click'
         setTimeout(() => {
-            el.current.click()
+            if(!id) {
+                el.current.focus()
+                el.current.click()
+            }
         }, 500)
-    }, []) 
+    }, [id]) 
 
         return ( 
             <nav className="nav">
