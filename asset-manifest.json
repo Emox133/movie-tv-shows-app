@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/tv-shows/static/css/main.2641aec7.chunk.css",
-    "main.js": "/tv-shows/static/js/main.c1701b2a.chunk.js",
-    "main.js.map": "/tv-shows/static/js/main.c1701b2a.chunk.js.map",
-    "runtime-main.js": "/tv-shows/static/js/runtime-main.8783026e.js",
-    "runtime-main.js.map": "/tv-shows/static/js/runtime-main.8783026e.js.map",
-    "static/js/2.13b2a413.chunk.js": "/tv-shows/static/js/2.13b2a413.chunk.js",
-    "static/js/2.13b2a413.chunk.js.map": "/tv-shows/static/js/2.13b2a413.chunk.js.map",
-    "index.html": "/tv-shows/index.html",
-    "precache-manifest.9b7a01dde0ddf7d2b9823589c3408fb7.js": "/tv-shows/precache-manifest.9b7a01dde0ddf7d2b9823589c3408fb7.js",
-    "service-worker.js": "/tv-shows/service-worker.js",
-    "static/css/main.2641aec7.chunk.css.map": "/tv-shows/static/css/main.2641aec7.chunk.css.map",
-    "static/js/2.13b2a413.chunk.js.LICENSE.txt": "/tv-shows/static/js/2.13b2a413.chunk.js.LICENSE.txt",
-    "static/media/area-graph.svg": "/tv-shows/static/media/area-graph.91516110.svg",
-    "static/media/calendar.svg": "/tv-shows/static/media/calendar.f1592feb.svg",
-    "static/media/heart-outlined.svg": "/tv-shows/static/media/heart-outlined.d26a9e38.svg"
+    "main.css": "/movie/tv-shows.io/static/css/main.2641aec7.chunk.css",
+    "main.js": "/movie/tv-shows.io/static/js/main.2caff51c.chunk.js",
+    "main.js.map": "/movie/tv-shows.io/static/js/main.2caff51c.chunk.js.map",
+    "runtime-main.js": "/movie/tv-shows.io/static/js/runtime-main.de90c0e5.js",
+    "runtime-main.js.map": "/movie/tv-shows.io/static/js/runtime-main.de90c0e5.js.map",
+    "static/js/2.13b2a413.chunk.js": "/movie/tv-shows.io/static/js/2.13b2a413.chunk.js",
+    "static/js/2.13b2a413.chunk.js.map": "/movie/tv-shows.io/static/js/2.13b2a413.chunk.js.map",
+    "index.html": "/movie/tv-shows.io/index.html",
+    "precache-manifest.d0cdd66a9b09f6d52ebe8e902922e273.js": "/movie/tv-shows.io/precache-manifest.d0cdd66a9b09f6d52ebe8e902922e273.js",
+    "service-worker.js": "/movie/tv-shows.io/service-worker.js",
+    "static/css/main.2641aec7.chunk.css.map": "/movie/tv-shows.io/static/css/main.2641aec7.chunk.css.map",
+    "static/js/2.13b2a413.chunk.js.LICENSE.txt": "/movie/tv-shows.io/static/js/2.13b2a413.chunk.js.LICENSE.txt",
+    "static/media/area-graph.svg": "/movie/tv-shows.io/static/media/area-graph.91516110.svg",
+    "static/media/calendar.svg": "/movie/tv-shows.io/static/media/calendar.f1592feb.svg",
+    "static/media/heart-outlined.svg": "/movie/tv-shows.io/static/media/heart-outlined.d26a9e38.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8783026e.js",
+    "static/js/runtime-main.de90c0e5.js",
     "static/js/2.13b2a413.chunk.js",
     "static/css/main.2641aec7.chunk.css",
-    "static/js/main.c1701b2a.chunk.js"
+    "static/js/main.2caff51c.chunk.js"
   ]
 }
