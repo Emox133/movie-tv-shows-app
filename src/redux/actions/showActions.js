@@ -18,6 +18,7 @@ export const getShows = () => dispatch => {
             payload: err
         })
     })
+    localStorage.removeItem('id');
 };
 
 export const getShow = (id, history) => dispatch => {
@@ -28,6 +29,8 @@ export const getShow = (id, history) => dispatch => {
             type: types.SET_SHOW,
             payload: res.data
         })
+        dispatch(getShowTrailer(id))
+        localStorage.setItem('id', id);
     })
     .catch(err => {
         dispatch({
@@ -37,6 +40,22 @@ export const getShow = (id, history) => dispatch => {
     })
     history.push(`/tv-shows/${id}`)
 }
+
+export const getShowTrailer = id => dispatch =>{
+    axios.get(`https://api.themoviedb.org/3/tv/${id}/videos?api_key=${key}`)
+    .then(res => {
+        dispatch({
+            type: types.SET_KEY,
+            payload: res.data.results[0].key
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: types.SET_ERRORS,
+            payload: err
+        })
+    })
+};
 
 export const searchShows = query => dispatch => {
     axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${key}&query=${query}`)

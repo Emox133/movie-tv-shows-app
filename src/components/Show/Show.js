@@ -14,7 +14,7 @@ import Average from './../../assets/icons/SVG/area-graph.svg'
 
 const Show = props => {
     const {popularity, poster_path, name, vote_average, first_air_date, id} = props.show
-    const {imageUrl} = assignImages(props, poster_path)
+    const {imageUrl} = assignImages(poster_path)
 
     const dispatch = useDispatch()
 

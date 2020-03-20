@@ -1,27 +1,53 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {assignImages} from './../../util/imageConfig'
 import Loader from './../Layout/UI/Loader/Loader'
 
 // Redux
-import {useSelector, shallowEqual} from 'react-redux'
+import {useSelector, shallowEqual, useDispatch} from 'react-redux'
+import {clearKey} from './../../redux/actions/dataActions'
+import {getShow} from './../../redux/actions/showActions'
 
 const SingleShow = (props) => {
-    const {show, imageEssentials, loading} = useSelector(state => ({
+    const {show, loading, key} = useSelector(state => ({
         show: state.show.show,
-        imageEssentials: state.data.config,
-        loading: state.data.loading
+        loading: state.data.loading,
+        key: state.data.key
     }), shallowEqual);
 
-    const {first_air_date, id, name, number_of_episodes, number_of_seasons, overview, poster_path} = show
-    const {imageUrl} = assignImages(imageEssentials, poster_path);
+    const dispatch = useDispatch();
+
+    const id = localStorage.id;
+
+    const {first_air_date, name, number_of_episodes, number_of_seasons, overview, poster_path} = show
+    const {imageUrl} = assignImages(poster_path);
+    const videoUrl = `https://www.youtube.com/embed/${key}?autoplay=1`
     
+    useEffect(() => {
+       if(id) dispatch(getShow(id, props.history));
+    }, []);
+
     return (
         !loading ?
             <div className="details" id={id}>
-                <button className="details__btn" onClick={() => props.history.goBack()}>&larr;</button>
-                <img src={imageUrl} alt="details" className="details__image"/>
+                <button className="btn details__btn" onClick={() => dispatch(clearKey(props.history, props.location.pathname))}>&larr;</button>
+                {key ?
+                <div>
+                    <iframe 
+                    className="details__video"
+                    src={videoUrl} 
+                    frameBorder="0" 
+                    title="trailer"
+                    allow="accelerometer; 
+                    autoplay; 
+                    encrypted-media; 
+                    gyroscope; 
+                    picture-in-picture" 
+                    allowFullScreen>
+                    </iframe>
+                </div> : 
+                <img src={imageUrl} alt="show" className="details__image"/>}
                 <h1 className="details__title">{name}</h1>
-                <h1 className="details__overview">Movie Overview:</h1>
+                <h1 className="details__overview">Show Overview:</h1>
                 <div className="details__info">
                     <span className="details__aired">Aired: {first_air_date}</span>
                     <span className="details__episodes">Episodes: {number_of_episodes}</span>

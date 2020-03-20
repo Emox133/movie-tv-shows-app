@@ -28,6 +28,7 @@ export const getMovie = (id, history) => dispatch => {
             payload: res.data
         })
         dispatch(getMovieTrailer(id));
+        localStorage.setItem('id', id);
     })
     .catch(err => {
         dispatch({
@@ -42,7 +43,7 @@ export const getMovieTrailer = id => dispatch =>{
     axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}`)
     .then(res => {
         dispatch({
-            type: types.SET_TRAILER,
+            type: types.SET_KEY,
             payload: res.data.results[0].key
         })
     })
@@ -70,21 +71,3 @@ export const searchMovies = query => dispatch => {
     })
 };
 
-// This action creator is neccesary because we need to combine three factors to actually
-// show the images 1. Base url, 2. Size, 3. Poster path
-export const getConfiguration = () => dispatch => {
-    dispatch({type: types.LOADING_CONFIG})
-    axios.get(`https://api.themoviedb.org/3/configuration?api_key=${key}`, {validateStatus: () => {return true}})
-    .then(res => {
-        dispatch({
-            type: types.SET_CONFIG,
-            payload: Object.assign({images: res.data.images})
-        })
-    })
-    .catch(err => {
-        dispatch({
-            type: types.SET_ERRORS,
-            payload: err
-        })
-    })
-};

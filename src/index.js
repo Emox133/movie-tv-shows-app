@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 // Redux
 import {Provider} from 'react-redux'
 import store from './redux/store'
-import {getConfiguration} from './redux/actions/movieActions'
+import {getConfiguration} from './redux/actions/dataActions'
 
 store.dispatch(getConfiguration())
 

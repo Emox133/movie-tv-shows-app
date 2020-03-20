@@ -3,6 +3,7 @@ import * as types from './../types'
 const initialState = {
     config: {},
     errors: {},
+    key: '',
     loading: false
 }
 
@@ -26,6 +27,18 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 errors: {...action.payload}
+            }
+        
+        case types.SET_KEY:
+            return {
+                ...state,
+                key: action.payload
+            }
+        
+        case types.CLEAR_KEY: 
+            return {
+                ...state,
+                key: null
             }
 
         default:

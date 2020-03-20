@@ -5,7 +5,6 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getMovies, searchMovies} from './../../redux/actions/movieActions'
 import {getShows, searchShows} from './../../redux/actions/showActions'
-import axios from 'axios'
 
 class Search extends Component {
     state = {
@@ -40,7 +39,7 @@ class Search extends Component {
  
     render() {
         return (
-            <form className="nav__input">
+            <form className="nav__form">
                    <input 
                    className="nav__search" 
                    name="query"

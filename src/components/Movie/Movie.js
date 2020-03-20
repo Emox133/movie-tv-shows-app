@@ -15,7 +15,7 @@ import Average from './../../assets/icons/SVG/area-graph.svg'
 const Movie = props => {
     const {popularity, poster_path, title, vote_average, release_date, id} = props.movie
     const dispatch = useDispatch()
-    const {imageUrl} = assignImages(props, poster_path)
+    const {imageUrl} = assignImages(poster_path)
 
     return (
         <article className="card" id={id} onClick={() => dispatch(getMovie(id, props.history))}>

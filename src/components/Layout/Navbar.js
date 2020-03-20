@@ -15,19 +15,19 @@ const Navbar = () => {
         el.current.focus()
         // Workaround for ComponentWillUpdate , no need to convert the Navbar 
         // to class based component just to call 'click'
-        // setTimeout(() => {
-        //     el.current.click()
-        // }, 500)
+        setTimeout(() => {
+            el.current.click()
+        }, 500)
     }, []) 
 
         return ( 
             <nav className="nav">
-                <div className="nav__btns">
+                <div>
                    <Link to="/movies">
-                       <button className="nav__btn nav__movie" onClick={() => dispatch(getMovies())}>Movies</button>
+                       <button className="btn nav__btn" onClick={() => dispatch(getMovies())}>Movies</button>
                    </Link>
                    <Link to="/tv-shows">
-                       <button ref={el} className="nav__btn nav__tv-shows" onClick={() => dispatch(getShows())}>Tv Shows</button>
+                       <button ref={el} className="btn nav__btn" onClick={() => dispatch(getShows())}>Tv Shows</button>
                    </Link>
                 </div>
                 <Search />
