@@ -7,6 +7,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 After downloading or cloning the project from github, please run npm install so that your local machine installs all essential
 dependencies. 
 
+### `Github Pages`
+https://emox133.github.io/movie-tv-shows-app/
+
 In the project directory, you can run:
 
 ### `npm start`
