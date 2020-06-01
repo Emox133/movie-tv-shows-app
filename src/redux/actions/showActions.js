@@ -1,7 +1,7 @@
 import * as types from './../types'
 import axios from 'axios'
 
-let key = procces.env.REACT_APP_API_KEY
+let key = process.env.REACT_APP_API_KEY
 export const getShows = () => dispatch => {
     dispatch({type: types.LOADING_SHOWS});
 

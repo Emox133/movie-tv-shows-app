@@ -1,7 +1,7 @@
 import * as types from './../types'
 import axios from 'axios'
 
-let key = procces.env.REACT_APP_API_KEY
+let key = process.env.REACT_APP_API_KEY
 export const getMovies = () => dispatch => {
     dispatch({type: types.LOADING_MOVIES})
     axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}`, {validateStatus: status => {return true}})
