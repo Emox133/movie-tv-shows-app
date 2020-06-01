@@ -1,7 +1,7 @@
 import * as types from './../types'
 import axios from 'axios'
-import {key} from './../../util/credentials'
 
+let key = procces.env.REACT_APP_API_KEY
 // This action creator is necessary because we need to combine three factors to actually
 // show the images 1. Base url, 2. Size, 3. Poster path
 export const getConfiguration = () => dispatch => {
