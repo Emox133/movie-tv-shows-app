@@ -4,7 +4,7 @@ import Loader from './../components/Layout/UI/Loader/Loader'
 import {useMovies} from '../contexts/MovieContext'
 import {useNeutral} from '../contexts/NeutralContext'
     
-const Movies = (props) => {
+const Movies = () => {
     const {movies} = useMovies()
     const {loading} = useNeutral()
 

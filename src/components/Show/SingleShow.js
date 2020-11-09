@@ -8,7 +8,6 @@ import {useTvShows} from './../../contexts/TvShowsContext'
 const SingleShow = ({history, location}) => {
     const {getShow, show} = useTvShows()
     const {clearKey, loading, trailerKey} = useNeutral()
-    console.log(loading)
 
     const id = localStorage.id;
 
@@ -24,7 +23,7 @@ const SingleShow = ({history, location}) => {
         !loading ?
             <div className="details" id={id}>
                 <button className="btn details__btn" onClick={() => clearKey(history, location.pathname)}>&larr;</button>
-                {trailerKey ?
+                {trailerKey && !loading ?
                 <div>
                     <iframe 
                     className="details__video"
@@ -38,8 +37,8 @@ const SingleShow = ({history, location}) => {
                     picture-in-picture" 
                     allowFullScreen>
                     </iframe>
-                </div> : !loading ? 
-                <img src={imageUrl} alt="show" className="details__image"/> : <Loader />}
+                </div> : 
+                <img src={imageUrl} alt="show" className="details__image"/>}
                 <h1 className="details__title">{name}</h1>
                 <h1 className="details__overview">Show Overview:</h1>
                 <div className="details__info">
@@ -48,7 +47,7 @@ const SingleShow = ({history, location}) => {
                     <span className="details__seasons">Seasons: {number_of_seasons}</span>
                 </div>
                 <p className="details__overview-text">{overview}</p>
-            </div>
+            </div> 
         : <Loader />
     )
 }

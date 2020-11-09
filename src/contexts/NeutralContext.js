@@ -27,7 +27,6 @@ export function NeutralProvider ({children}) {
     }, [key]);
 
     const clearKey = (fn, type) => {
-        // localStorage.removeItem('id')
         setTrailerKey(null)
         
         // type.startsWith('/movies') ? fn.push(type) : type.startsWith('/tv-shows') ? fn.push(type) : null; 

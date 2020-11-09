@@ -24,7 +24,6 @@ const Navbar = () => {
             <nav className="nav">
                 <div>
                    <Link to="/movies">
-                       {/* <button className="btn nav__btn" onClick={() => dispatch(getMovies())}>Movies</button> */}
                        <button className="btn nav__btn" onClick={() => getMovies()}>Movies</button>
                    </Link>
                    <Link to="/tv-shows">

@@ -6,11 +6,11 @@ import {useNeutral} from './../../contexts/NeutralContext'
 
 const SingleMovie = (props) => {
     const {movie, getMovie} = useMovies()
+    const {overview, title, poster_path} = movie
+    const {imageUrl} = assignImages(poster_path);
     const {loading, trailerKey, clearKey} = useNeutral()
     const id = localStorage.id;
 
-    const {overview, title, poster_path} = movie
-    const {imageUrl} = assignImages(poster_path);
     const videoUrl = `https://www.youtube.com/embed/${trailerKey}?autoplay=1`
 
    useEffect(() => {
@@ -21,7 +21,7 @@ const SingleMovie = (props) => {
         !loading ?
             <div className="details" id={id}>
                 <button className="btn details__btn" onClick={() => clearKey(props.history, props.location.pathname)}>&larr;</button>
-                {trailerKey ? 
+                {trailerKey && !loading ? 
                 <div>
                     <iframe 
                     className="details__video"
@@ -35,8 +35,8 @@ const SingleMovie = (props) => {
                     picture-in-picture" 
                     allowFullScreen>
                     </iframe>
-                </div> : !loading ? 
-                <img src={imageUrl} alt="movie" className="details__image"/> : <Loader />}    
+                </div> :  
+                <img src={imageUrl} alt="movie" className="details__image"/>}    
                 <h1 className="details__title">{title}</h1>
                 <h1 className="details__overview">Movie Overview:</h1>
                 <p className="details__overview-text">{overview}</p>

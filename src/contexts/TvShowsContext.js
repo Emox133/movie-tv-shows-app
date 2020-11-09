@@ -19,27 +19,29 @@ export function TvShowsProvider ({children}) {
     
         axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${key}`)
         .then(res => {
+            setLoading(false)
             let result = res.data.results.slice(0, 11)
             setShows(result)
-            setLoading(false)
         })
         .catch(err => {
             setLoading(false)
             console.log(err.response)
         })
-        // localStorage.removeItem('id');
     };
 
     const getShowTrailer = useCallback((id) => {
+        setLoading(true)
         axios.get(`https://api.themoviedb.org/3/tv/${id}/videos?api_key=${key}`)
         .then(res => {
+            setLoading(false)
             let result = res.data.results[0].key
             setTrailerKey(result)
         })
         .catch(err => {
+            setLoading(false)
             console.log(err.response)
         })
-    }, [key, setTrailerKey]);
+    }, [key, setTrailerKey, setLoading]);
 
     const getShow = useCallback((id, history) => {
         setLoading(true)
@@ -47,8 +49,7 @@ export function TvShowsProvider ({children}) {
         axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${key}`)
         .then(res => {
             setLoading(false)
-            let result = res.data
-            setShow(result)
+            setShow(res.data)
             getShowTrailer(id)
         })
         .catch(err => {

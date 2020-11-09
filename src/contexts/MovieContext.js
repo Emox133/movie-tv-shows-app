@@ -18,9 +18,9 @@ export function MoviesProvider({children}) {
         setLoading(true)
         axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}`)
         .then(res => {
+            setLoading(false)
             let results = res.data.results.slice(0, 11)
             setMovies(results)
-            setLoading(false)
         }).catch(err => {
             setLoading(false)
             console.log(err.response)
@@ -28,14 +28,17 @@ export function MoviesProvider({children}) {
     }
 
     const getMovieTrailer = useCallback((id) => {
+        setLoading(true)
         axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}`)
         .then(res => {
+            setLoading(false)
             let result = res.data.results[0].key
             setTrailerKey(result)
         }).catch(err => {
+            setLoading(false)
             console.log(err.response)
         })
-    }, [key, setTrailerKey])
+    }, [key, setTrailerKey, setLoading])
 
     const getMovie = useCallback((id, history) => {
         setLoading(true)
@@ -54,12 +57,15 @@ export function MoviesProvider({children}) {
     }, [setLoading, key, getMovieTrailer])
 
     const searchMovies = query => {
+        setLoading(true)
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${query}`)
         .then(res => {
+            setLoading(false)
             const result = res.data.results.slice(0, 12)
             setMovies(result)
         })
         .catch(err => {
+            setLoading(false)
             console.log(err.response)
         })
     };
