@@ -1,10 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 import {assignImages} from './../../util/imageConfig'
-
-// Redux
-import {useDispatch} from 'react-redux'
-import {getShow} from './../../redux/actions/showActions'
+import {useTvShows} from './../../contexts/TvShowsContext'
 
 // SVG
 import {ReactSVG} from 'react-svg'
@@ -13,13 +10,12 @@ import Heart from './../../assets/icons/SVG/heart-outlined.svg'
 import Average from './../../assets/icons/SVG/area-graph.svg'
 
 const Show = props => {
+    const {getShow} = useTvShows()
     const {popularity, poster_path, name, vote_average, first_air_date, id} = props.show
     const {imageUrl} = assignImages(poster_path)
 
-    const dispatch = useDispatch()
-
     return (
-        <article className="card" id={id} onClick={() => dispatch(getShow(id, props.history))}>
+        <article className="card" id={id} onClick={() => getShow(id, props.history)}>
             <img src={imageUrl} className="card__image" alt="show"/>
             <h1 className="card__title">{name}</h1>
             <div className="card__ratings">

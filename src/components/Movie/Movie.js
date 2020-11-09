@@ -1,10 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 import {assignImages} from './../../util/imageConfig'
-
-// Redux
-import {useDispatch} from 'react-redux' 
-import {getMovie} from './../../redux/actions/movieActions'
+import {useMovies} from './../../contexts/MovieContext'
 
 // SVG
 import {ReactSVG} from 'react-svg'
@@ -14,11 +11,12 @@ import Average from './../../assets/icons/SVG/area-graph.svg'
 
 const Movie = props => {
     const {popularity, poster_path, title, vote_average, release_date, id} = props.movie
-    const dispatch = useDispatch()
     const {imageUrl} = assignImages(poster_path)
 
+    const {getMovie} = useMovies()
+
     return (
-        <article className="card" id={id} onClick={() => dispatch(getMovie(id, props.history))}>
+        <article className="card" id={id} onClick={() => getMovie(id, props.history)}>
             <img src={imageUrl} className="card__image" alt="movie"/>
             <h1 className="card__title">{title}</h1>
             <div className="card__ratings">
@@ -34,4 +32,3 @@ const Movie = props => {
 }
 
 export default withRouter(Movie)
-

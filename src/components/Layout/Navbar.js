@@ -2,19 +2,16 @@ import React, {useRef, useEffect} from 'react'
 import Search from './Search'
 import {Link} from 'react-router-dom'
 
-// Redux 
-import {useDispatch} from 'react-redux'
-import {getMovies} from './../../redux/actions/movieActions'
-import {getShows} from './../../redux/actions/showActions'
+import {useMovies} from '../../contexts/MovieContext'
+import {useTvShows} from '../../contexts/TvShowsContext'
 
 const Navbar = () => {
-    const dispatch = useDispatch()
     const el = useRef(null)
     const id = localStorage.id;
+    const {getMovies} = useMovies()
+    const {getShows} = useTvShows()
 
     useEffect(() => {
-        // Workaround for ComponentWillUpdate , no need to convert the Navbar 
-        // to class based component just to call 'click'
         setTimeout(() => {
             if(!id) {
                 el.current.focus()
@@ -27,10 +24,11 @@ const Navbar = () => {
             <nav className="nav">
                 <div>
                    <Link to="/movies">
-                       <button className="btn nav__btn" onClick={() => dispatch(getMovies())}>Movies</button>
+                       {/* <button className="btn nav__btn" onClick={() => dispatch(getMovies())}>Movies</button> */}
+                       <button className="btn nav__btn" onClick={() => getMovies()}>Movies</button>
                    </Link>
                    <Link to="/tv-shows">
-                       <button ref={el} className="btn nav__btn" onClick={() => dispatch(getShows())}>Tv Shows</button>
+                       <button ref={el} className="btn nav__btn" onClick={() => getShows()}>Tv Shows</button>
                    </Link>
                 </div>
                 <Search />

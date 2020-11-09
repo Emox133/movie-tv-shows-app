@@ -1,63 +1,59 @@
-import React, { Component } from 'react'
+import React, {useState, useEffect } from 'react'
 import {withRouter} from 'react-router-dom'
 
-// Redux
-import {connect} from 'react-redux'
-import {getMovies, searchMovies} from './../../redux/actions/movieActions'
-import {getShows, searchShows} from './../../redux/actions/showActions'
+// React Context
+import {useMovies} from '../../contexts/MovieContext'
+import {useTvShows} from '../../contexts/TvShowsContext'
 
-class Search extends Component {
-    state = {
+function Search ({location}) {
+    const {getMovies, searchMovies} = useMovies()
+    const {getShows, searchShows} = useTvShows()
+    const [fields, setQuery] = useState({
         query: ''
-    }
+    })
 
-    componentDidUpdate() {
+    const query = fields.query
+    useEffect(() => {
         // Movies
-        if(this.state.query.length >= 3 && this.state.query !== 0 && this.props.location.pathname === '/movies') {
+        if(query.length >= 3 && query !== 0 && location.pathname === '/movies') {
             setTimeout(() => {
-                this.props.onSearchMovies(this.state.query);
+                searchMovies(query)
             }, 1000)
-        } else if(this.state.query.length < 3) {
-            this.props.onGetMovies();
+        } else if(query.length === 0) {
+            setTimeout(() => {
+                getMovies()
+            }, 1000)
         }
 
         // Tv-Shows
-        if(this.state.query.length >= 3 && this.state.query !== 0 && this.props.location.pathname === '/tv-shows') {
+        if(query.length >= 3 && query !== 0 && location.pathname === '/tv-shows') {
             setTimeout(() => {
-                this.props.onSearchShows(this.state.query);
+                searchShows(query)
             }, 1000)
-        } else if(this.state.query.length < 3) {
-            this.props.onGetShows();
+        } else if(query.length === 0) {
+            setTimeout(() => {
+                getShows()
+            }, 1000)
         }
-    }
+    }, [query])
 
-    handleChange = e => {
-        this.setState({
+    const handleChange = e => {
+        setQuery({
+            ...fields,
             [e.target.name]: e.target.value
         })
     };
  
-    render() {
         return (
             <form className="nav__form">
-                   <input 
+                <input 
                    className="nav__search" 
                    name="query"
                    placeholder="Search movies, tv-shows..." 
                    type="search" 
-                   onChange={this.handleChange}/>
+                   onChange={handleChange}/>
             </form>
         )
-    }
 }
 
-const mapActionToProps = dispatch => {
-    return {
-        onSearchMovies: query => dispatch(searchMovies(query)),
-        onSearchShows: query => dispatch(searchShows(query)),
-        onGetMovies: () => dispatch(getMovies()),
-        onGetShows: () => dispatch(getShows())
-    }
-}
-
-export default connect(null, mapActionToProps)(withRouter(Search))
+export default withRouter(Search)
